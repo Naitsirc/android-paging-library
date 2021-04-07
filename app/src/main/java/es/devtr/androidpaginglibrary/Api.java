@@ -1,4 +1,4 @@
-package net.simplifiedcoding.androidpaginglibrary;
+package es.devtr.androidpaginglibrary;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

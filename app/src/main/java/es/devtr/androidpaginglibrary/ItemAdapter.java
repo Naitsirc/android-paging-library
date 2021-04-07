@@ -1,10 +1,6 @@
-package net.simplifiedcoding.androidpaginglibrary;
+package es.devtr.androidpaginglibrary;
 
-import android.arch.paging.PagedListAdapter;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.util.DiffUtil;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemAdapter extends PagedListAdapter<Item, ItemAdapter.ItemViewHolder> {
 
@@ -37,11 +36,7 @@ public class ItemAdapter extends PagedListAdapter<Item, ItemAdapter.ItemViewHold
 
         if (item != null) {
 
-            Glide.with(mCtx)
-                    .load(item.owner.profile_image)
-                    .into(holder.imageView);
-
-            holder.textView.setText(item.owner.display_name);
+            holder.textView.setText(item.index+"");
 
         } else {
             Toast.makeText(mCtx, "Item is null", Toast.LENGTH_LONG).show();
@@ -54,12 +49,12 @@ public class ItemAdapter extends PagedListAdapter<Item, ItemAdapter.ItemViewHold
             new DiffUtil.ItemCallback<Item>() {
                 @Override
                 public boolean areItemsTheSame(Item oldItem, Item newItem) {
-                    return oldItem.answer_id == newItem.answer_id;
+                    return oldItem.index == newItem.index;
                 }
 
                 @Override
                 public boolean areContentsTheSame(Item oldItem, Item newItem) {
-                    return oldItem.equals(newItem);
+                    return oldItem.index.equals(newItem.index);
                 }
             };
 

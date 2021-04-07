@@ -1,4 +1,4 @@
-package net.simplifiedcoding.androidpaginglibrary;
+package es.devtr.androidpaginglibrary;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
