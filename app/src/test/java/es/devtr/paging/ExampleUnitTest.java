@@ -1,4 +1,4 @@
-package es.devtr.androidpaginglibrary;
+package es.devtr.paging;
 
 import org.junit.Test;
 

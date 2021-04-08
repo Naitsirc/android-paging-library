@@ -1,4 +1,4 @@
-package es.devtr.androidpaginglibrary;
+package es.devtr.paging;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,17 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemAdapter extends PagedListAdapter<Item, ItemAdapter.ItemViewHolder> {
 
-    private Context mCtx;
+    private final Context context;
 
-    protected ItemAdapter(Context mCtx) {
+    public ItemAdapter(Context context) {
         super(DIFF_CALLBACK);
-        this.mCtx = mCtx;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_item, parent, false);
         return new ItemViewHolder(view);
     }
 
@@ -39,13 +39,13 @@ public class ItemAdapter extends PagedListAdapter<Item, ItemAdapter.ItemViewHold
             holder.textView.setText(item.index+"");
 
         } else {
-            Toast.makeText(mCtx, "Item is null", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Item is null", Toast.LENGTH_LONG).show();
         }
 
     }
 
 
-    private static DiffUtil.ItemCallback<Item> DIFF_CALLBACK =
+    private static final DiffUtil.ItemCallback<Item> DIFF_CALLBACK =
             new DiffUtil.ItemCallback<Item>() {
                 @Override
                 public boolean areItemsTheSame(Item oldItem, Item newItem) {
@@ -59,7 +59,7 @@ public class ItemAdapter extends PagedListAdapter<Item, ItemAdapter.ItemViewHold
             };
 
 
-    class ItemViewHolder extends RecyclerView.ViewHolder {
+    static class ItemViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textView;

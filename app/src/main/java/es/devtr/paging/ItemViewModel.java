@@ -1,4 +1,4 @@
-package es.devtr.androidpaginglibrary;
+package es.devtr.paging;
 
 
 import androidx.lifecycle.LiveData;
@@ -9,7 +9,7 @@ import androidx.paging.PagedList;
 
 public class ItemViewModel extends ViewModel {
 
-    LiveData<PagedList<Item>> itemPagedList;
+    public LiveData<PagedList<Item>> itemPagedList;
     LiveData<PageKeyedDataSource<Integer, Item>> liveDataSource;
 
     public ItemViewModel() {
@@ -22,8 +22,7 @@ public class ItemViewModel extends ViewModel {
                         .setEnablePlaceholders(false)
                         .setPageSize(ItemDataSource.PAGE_SIZE)
                         .build();
-
-        itemPagedList = (new LivePagedListBuilder(itemDataSourceFactory, config)).build();
+        itemPagedList = new LivePagedListBuilder<>(itemDataSourceFactory, config).build();
 
     }
 }

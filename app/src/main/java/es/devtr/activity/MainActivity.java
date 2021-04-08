@@ -1,4 +1,4 @@
-package es.devtr.androidpaginglibrary;
+package es.devtr.activity;
 
 import android.os.Bundle;
 
@@ -10,17 +10,20 @@ import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import es.devtr.paging.Item;
+import es.devtr.paging.ItemAdapter;
+import es.devtr.paging.ItemViewModel;
+import es.devtr.paging.R;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
