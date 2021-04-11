@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        ItemViewModel itemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
+        ItemViewModel itemViewModel = new ViewModelProvider(this).get(ItemViewModel.class);
         final ItemAdapter adapter = new ItemAdapter(this);
 
         itemViewModel.itemPagedList.observe(this, new Observer<PagedList<Item>>() {
